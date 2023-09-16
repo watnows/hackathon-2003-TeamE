@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'input_information.dart';
+import 'package:gap/gap.dart';
 
 class CopyButtonExample extends StatelessWidget {
   void _copyToClipboard(BuildContext context) {
@@ -26,7 +27,7 @@ class CopyButtonExample extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(16.0, 50.0, 16.0, 16.0), // 上部の余白を追加
         child: Column(
           children: [
-            const SizedBox(height: 60),
+            const Gap(150),
             ElevatedButton(
               onPressed: () => _createButtonPressed(context),
               style: ElevatedButton.styleFrom(
@@ -42,7 +43,7 @@ class CopyButtonExample extends StatelessWidget {
 
             ),
 
-            const SizedBox(height: 80),
+            const Gap(90),
             Row(
               children: [
                 const Expanded(
