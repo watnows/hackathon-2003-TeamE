@@ -12,7 +12,7 @@ class ImagePickerScreen extends StatelessWidget {
     final imagePicker = ImagePicker();
     final images = await imagePicker.pickMultiImage();
 
-    _imageNotifier.value = [...?_imageNotifier.value, ...?images];
+    _imageNotifier.value = [...?_imageNotifier.value, ...images];
   }
 
   @override
@@ -62,6 +62,20 @@ class ImagePickerScreen extends StatelessWidget {
                     }
                   },
                 ),
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () {
+              },
+              style: ElevatedButton.styleFrom(
+                shape: const StadiumBorder(), // ボタンの形状を楕円形にします
+                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15), // 横と縦のパディングを適切に調整します
+                ),
+              child: const Text(
+                '完了',
+                style: TextStyle(
+                  fontSize: 30, 
+                  ),
               ),
             ),
           ],
