@@ -37,16 +37,16 @@ class HomePage extends StatelessWidget {
               'Name',
               style: Theme.of(context).textTheme.displayLarge,
             ),
-            Gap(20),
+            const Gap(20),
             Text(
               'self-introduction',
               style: Theme.of(context).textTheme.headlineLarge,
             ),
-            Gap(20),
-            Text(
+            const Gap(20),
+            const Text(
               'img',
             ),
-            Gap(20),
+            const Gap(20),
             Text(
               'Career',
               style: Theme.of(context).textTheme.headlineLarge,
