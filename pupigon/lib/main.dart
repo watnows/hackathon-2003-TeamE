@@ -32,6 +32,9 @@ class HomePage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            MediaQuery.of(context).size.width > 480
+                ? Container()
+                : const Gap(40),
             const Gap(40),
             Text(
               'Name',
