@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'select_image.dart';
 
 class InputFormScreen extends StatelessWidget {
   const InputFormScreen({super.key});
@@ -49,6 +50,25 @@ class InputFormScreen extends StatelessWidget {
               decoration: InputDecoration(
                 labelText: 'リンク説明',
                 border: OutlineInputBorder(),
+              ),
+            ),
+            const Gap(80),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => ImagePickerScreen()),
+                  );
+              },
+              style: ElevatedButton.styleFrom(
+                shape: const StadiumBorder(), // ボタンの形状を楕円形にします
+                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15), // 横と縦のパディングを適切に調整します
+                ),
+              child: const Text(
+                '完了',
+                style: TextStyle(
+                  fontSize: 30, 
+                  ),
               ),
             ),
           ],
