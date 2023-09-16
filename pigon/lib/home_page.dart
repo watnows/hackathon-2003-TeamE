@@ -4,6 +4,8 @@ import 'input_information.dart';
 import 'package:gap/gap.dart';
 
 class CopyButtonExample extends StatelessWidget {
+  const CopyButtonExample({super.key});
+
   void _copyToClipboard(BuildContext context) {
     Clipboard.setData(const ClipboardData(text: "URL1")); // "URL"テキストをクリップボードにコピー
     ScaffoldMessenger.of(context).showSnackBar(
@@ -16,7 +18,7 @@ class CopyButtonExample extends StatelessWidget {
   void _createButtonPressed(BuildContext context) {
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => InputFormScreen()),
+      MaterialPageRoute(builder: (context) => const InputFormScreen()),
     );
   }
 
