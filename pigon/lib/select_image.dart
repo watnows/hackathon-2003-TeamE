@@ -3,13 +3,16 @@ import 'package:image_picker/image_picker.dart';
 import 'package:gap/gap.dart';
 import 'dart:io';
 
+
+//before
 class ImagePickerScreen extends StatelessWidget {
-  final String name;
   final ValueNotifier<List<XFile>?> _imageNotifier = ValueNotifier<List<XFile>?>(null);
 
-  ImagePickerScreen({required this.name, Key? key}) : super(key: key);
+  ImagePickerScreen({Key? key}) : super(key: key);
 
   Future<void> getImage() async {
+
+    
     final imagePicker = ImagePicker();
     final images = await imagePicker.pickMultiImage();
 
@@ -32,12 +35,12 @@ class ImagePickerScreen extends StatelessWidget {
                   onPressed: () => Navigator.pop(context),
                 ),
                 const SizedBox(width: 60),
-                Text(
-                  name
-                  // name,
-                  // style: const TextStyle(
-                  // fontSize: 15, 
-                  // ),
+
+                const Text(
+                  'name',
+                  style: TextStyle(
+                  fontSize: 15, 
+                  ),
                 ),
               ],
             ),
