@@ -1,5 +1,18 @@
 {
   "projects": {
     "default": "watnow-hackathon-pigon"
-  }
+  },
+  "targets": {
+    "watnow-hackathon-pigon": {
+      "hosting": {
+        "pigon": [
+          "pigon"
+        ],
+        "pupigon": [
+          "pupigon"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }
