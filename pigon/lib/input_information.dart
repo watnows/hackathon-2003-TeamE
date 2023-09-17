@@ -12,10 +12,6 @@ class UserInformation {
   String linkDescription = '';
 }
 
-
-
-
-
 final _nameController =TextEditingController();
 final _introductionController =TextEditingController();
 final _linkController =TextEditingController();
@@ -42,8 +38,13 @@ class InputFormScreen extends ConsumerWidget {
                     icon: const Icon(Icons.arrow_back),
                     onPressed: () => Navigator.pop(context),
                   ),
-                  const SizedBox(width: 80),
-                  const Text('サイト情報登録'),
+                  const SizedBox(width: 60),
+                  const Text(
+                    'サイト情報登録',
+                    style: TextStyle(
+                    fontSize: 20,
+                    ),
+                  )
                 ],
               ),
               const SizedBox(height: 100),
@@ -78,7 +79,7 @@ class InputFormScreen extends ConsumerWidget {
                 ),
                 controller:_linkDescriptionController
               ),
-              const Gap(80),
+              const Gap(150),
               ElevatedButton(
                 onPressed: () {
                   final userInformation = {
@@ -95,14 +96,6 @@ class InputFormScreen extends ConsumerWidget {
                   );
               
                 },
-                //
-                // NoteModelクラスに、ダミーのデータを引数として渡して保存する.
-                        // ref.read(noteProvider.notifier).addNote(NotesModel(
-                        //     id: randomId,
-                        //     body: bodyController.text,
-                        //     createdAt: createdAt));
-        
-        
                 style: ElevatedButton.styleFrom(
                   shape: const StadiumBorder(),
                   padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
