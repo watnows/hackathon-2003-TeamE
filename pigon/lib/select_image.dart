@@ -3,16 +3,14 @@ import 'package:image_picker/image_picker.dart';
 import 'package:gap/gap.dart';
 import 'dart:io';
 
-
 //before
-class ImagePickerScreen extends StatelessWidget {
-  final ValueNotifier<List<XFile>?> _imageNotifier = ValueNotifier<List<XFile>?>(null);
+class SelectImage extends StatelessWidget {
+  final ValueNotifier<List<XFile>?> _imageNotifier =
+      ValueNotifier<List<XFile>?>(null);
 
-  ImagePickerScreen({Key? key}) : super(key: key);
+  SelectImage({Key? key}) : super(key: key);
 
   Future<void> getImage() async {
-
-    
     final imagePicker = ImagePicker();
     final images = await imagePicker.pickMultiImage();
 
@@ -35,11 +33,10 @@ class ImagePickerScreen extends StatelessWidget {
                   onPressed: () => Navigator.pop(context),
                 ),
                 const SizedBox(width: 60),
-
                 const Text(
                   'name',
                   style: TextStyle(
-                  fontSize: 15, 
+                    fontSize: 15,
                   ),
                 ),
               ],
@@ -53,7 +50,8 @@ class ImagePickerScreen extends StatelessWidget {
                       return const Text('No images selected.');
                     } else {
                       return GridView.builder(
-                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 3,
                           mainAxisSpacing: 10,
                           crossAxisSpacing: 10,
@@ -70,18 +68,17 @@ class ImagePickerScreen extends StatelessWidget {
               ),
             ),
             ElevatedButton(
-              onPressed: () {
-                
-              },
+              onPressed: () {},
               style: ElevatedButton.styleFrom(
-                shape: const StadiumBorder(), // ボタンの形状を楕円形にします
-                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15), // 横と縦のパディングを適切に調整します
-                ),
+                shape: const StadiumBorder(),
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+              ),
               child: const Text(
                 '完了',
                 style: TextStyle(
-                  fontSize: 30, 
-                  ),
+                  fontSize: 30,
+                ),
               ),
             ),
           ],
