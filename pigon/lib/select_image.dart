@@ -3,16 +3,20 @@ import 'package:image_picker/image_picker.dart';
 import 'package:gap/gap.dart';
 import 'dart:io';
 
+
+//before
 class ImagePickerScreen extends StatelessWidget {
   final ValueNotifier<List<XFile>?> _imageNotifier = ValueNotifier<List<XFile>?>(null);
 
   ImagePickerScreen({Key? key}) : super(key: key);
 
   Future<void> getImage() async {
+
+    
     final imagePicker = ImagePicker();
     final images = await imagePicker.pickMultiImage();
 
-    _imageNotifier.value = [...?_imageNotifier.value, ...?images];
+    _imageNotifier.value = [...?_imageNotifier.value, ...images];
   }
 
   @override
@@ -27,12 +31,13 @@ class ImagePickerScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 IconButton(
-                  icon: Icon(Icons.arrow_back),
+                  icon: const Icon(Icons.arrow_back),
                   onPressed: () => Navigator.pop(context),
                 ),
                 const SizedBox(width: 60),
+
                 const Text(
-                  'Image Picker Screen',
+                  'name',
                   style: TextStyle(
                   fontSize: 15, 
                   ),
@@ -62,6 +67,21 @@ class ImagePickerScreen extends StatelessWidget {
                     }
                   },
                 ),
+              ),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                
+              },
+              style: ElevatedButton.styleFrom(
+                shape: const StadiumBorder(), // ボタンの形状を楕円形にします
+                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15), // 横と縦のパディングを適切に調整します
+                ),
+              child: const Text(
+                '完了',
+                style: TextStyle(
+                  fontSize: 30, 
+                  ),
               ),
             ),
           ],
