@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const Pupigon());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class Pupigon extends StatelessWidget {
+  const Pupigon({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Pupigon',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
