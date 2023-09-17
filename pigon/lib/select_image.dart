@@ -4,9 +4,10 @@ import 'package:gap/gap.dart';
 import 'dart:io';
 
 class ImagePickerScreen extends StatelessWidget {
+  final String name;
   final ValueNotifier<List<XFile>?> _imageNotifier = ValueNotifier<List<XFile>?>(null);
 
-  ImagePickerScreen({Key? key}) : super(key: key);
+  ImagePickerScreen({required this.name, Key? key}) : super(key: key);
 
   Future<void> getImage() async {
     final imagePicker = ImagePicker();
@@ -27,15 +28,16 @@ class ImagePickerScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 IconButton(
-                  icon: Icon(Icons.arrow_back),
+                  icon: const Icon(Icons.arrow_back),
                   onPressed: () => Navigator.pop(context),
                 ),
                 const SizedBox(width: 60),
-                const Text(
-                  'Image Picker Screen',
-                  style: TextStyle(
-                  fontSize: 15, 
-                  ),
+                Text(
+                  name
+                  // name,
+                  // style: const TextStyle(
+                  // fontSize: 15, 
+                  // ),
                 ),
               ],
             ),
@@ -66,6 +68,7 @@ class ImagePickerScreen extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
+                
               },
               style: ElevatedButton.styleFrom(
                 shape: const StadiumBorder(), // ボタンの形状を楕円形にします

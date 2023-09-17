@@ -1,12 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'select_image.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:provider/provider.dart';
 
-class InputFormScreen extends StatelessWidget {
-  const InputFormScreen({super.key});
+
+final inputFormProvider = StateProvider<InputFormData>((ref) {
+
+  return InputFormData();
+});
+
+class InputFormData {
+  String name = '';
+  String introduction = '';
+  String link = '';
+  String linkDescription = '';
+}
+
+class InputFormScreen extends ConsumerWidget {
+  const InputFormScreen({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -25,50 +41,69 @@ class InputFormScreen extends StatelessWidget {
               ],
             ),
             const SizedBox(height: 100),
-            const TextField(
-              decoration: InputDecoration(
+            TextField(
+              decoration: const InputDecoration(
                 labelText: '名前',
                 border: OutlineInputBorder(),
               ),
+              onChanged: (value) {
+                context.read().state.name = value;
+
+
+              },
             ),
             const SizedBox(height: 20),
-            const TextField(
-              decoration: InputDecoration(
+            TextField(
+              decoration: const InputDecoration(
                 labelText: '自己紹介',
                 border: OutlineInputBorder(),
               ),
+              onChanged: (value) {
+                context.read().state.introduction = value;
+              },
             ),
             const SizedBox(height: 20),
-            const TextField(
-              decoration: InputDecoration(
+            TextField(
+              decoration: const InputDecoration(
                 labelText: 'リンク',
                 border: OutlineInputBorder(),
               ),
+              onChanged: (value) {
+                context.read().state.link = value;
+              },
             ),
             const SizedBox(height: 20),
-            const TextField(
-              decoration: InputDecoration(
+            TextField(
+              decoration: const InputDecoration(
                 labelText: 'リンク説明',
                 border: OutlineInputBorder(),
               ),
+              onChanged: (value) {
+                context.read().state.linkDescription = value;
+              },
             ),
             const Gap(80),
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => ImagePickerScreen()),
-                  );
+                  MaterialPageRoute(builder: (context) => ImagePickerScreen(
+
+                    name: ref.read(inputFormProvider).name,
+
+                  )),
+                );
+              
               },
               style: ElevatedButton.styleFrom(
-                shape: const StadiumBorder(), // ボタンの形状を楕円形にします
-                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15), // 横と縦のパディングを適切に調整します
-                ),
+                shape: const StadiumBorder(),
+                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+              ),
               child: const Text(
                 '完了',
                 style: TextStyle(
-                  fontSize: 30, 
-                  ),
+                  fontSize: 30,
+                ),
               ),
             ),
           ],
@@ -77,3 +112,4 @@ class InputFormScreen extends StatelessWidget {
     );
   }
 }
+
