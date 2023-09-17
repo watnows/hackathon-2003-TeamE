@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class ImagesGrid extends StatelessWidget {
   const ImagesGrid({super.key, this.images, this.imageDescriptions});
   final Map<String, String>? images;
-  final Map<String, String>? imageDescriptions;
+  final Map<String, dynamic>? imageDescriptions;
 
   @override
   Widget build(BuildContext context) {

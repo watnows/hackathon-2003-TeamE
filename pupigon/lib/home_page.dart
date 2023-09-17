@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 import 'package:pupigon/images_grid.dart';
@@ -13,14 +14,38 @@ const images = {
   '7': 'https://picsum.photos/200/240',
 };
 
-const imageDescriptions = {
-  '0': 'this is image0',
-  '1': '',
-  '3': 'that is not image3',
-};
-
 class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+  const HomePage({super.key, required this.id});
+  final String id;
+
+  @override
+  Widget build(BuildContext context) {
+    var db = FirebaseFirestore.instance;
+
+    return FutureBuilder(
+      future: db.collection('homepages').doc(id).get(),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return _HomePage(
+            images: images,
+            params: snapshot.data!.data(),
+          );
+        } else {
+          return const Scaffold(
+            body: Center(
+              child: CircularProgressIndicator(),
+            ),
+          );
+        }
+      },
+    );
+  }
+}
+
+class _HomePage extends StatelessWidget {
+  const _HomePage({this.images, this.params});
+  final Map<String, String>? images;
+  final Map<String, dynamic>? params;
 
   @override
   Widget build(BuildContext context) {
@@ -35,7 +60,7 @@ class HomePage extends StatelessWidget {
             const Gap(40),
             Center(
               child: Text(
-                'Name',
+                params!['name'] ?? '',
                 style: Theme.of(context).textTheme.displayLarge,
               ),
             ),
@@ -47,8 +72,8 @@ class HomePage extends StatelessWidget {
                   left: MediaQuery.of(context).size.width * 0.1,
                 ),
                 child: Text(
-                  'self-introduction. lorem ipsum dolor sit amet, consectetur adipiscing elit. sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
-                      .replaceAll('\\n', '\n'),
+                  params!['selfIntroduction']?.replaceAll('\\n', '\n') ??
+                      ''.replaceAll('\\n', '\n'),
                   style: Theme.of(context).textTheme.headlineLarge,
                 ),
               ),
@@ -62,7 +87,7 @@ class HomePage extends StatelessWidget {
               width: MediaQuery.of(context).size.width * 0.8,
               child: ImagesGrid(
                 images: images,
-                imageDescriptions: imageDescriptions,
+                imageDescriptions: params!['imageDescriptions'] ?? {},
               ),
             ),
             const Gap(20),
@@ -73,8 +98,7 @@ class HomePage extends StatelessWidget {
                   left: MediaQuery.of(context).size.width * 0.1,
                 ),
                 child: Text(
-                  'Career, lorem ipsum dolor sit amet, consectetur adipiscing elit. sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
-                      .replaceAll('\\n', '\n'),
+                  params!['description']?.replaceAll('\\n', '\n') ?? '',
                   style: Theme.of(context).textTheme.headlineLarge,
                 ),
               ),

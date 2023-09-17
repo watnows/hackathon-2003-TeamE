@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:pupigon/firebase_options.dart';
 import 'package:pupigon/home_page.dart';
 
+const id = 'FwnMRzyyFVHzjKl6hHEz';
+
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -21,7 +24,7 @@ class Pupigon extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const HomePage(),
+      home: const HomePage(id: id),
     );
   }
 }
