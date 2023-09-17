@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "662151417141",
+    "project_id": "watnow-hackathon-pigon",
+    "storage_bucket": "watnow-hackathon-pigon.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:662151417141:android:9f3feaceec08f4ffa6907c",
+        "android_client_info": {
+          "package_name": "com.example.pigon"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbO6HWAL2sgP7nTMYZ2wA5ccHMbA-yc-k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:662151417141:android:aa843111a3b6f13fa6907c",
+        "android_client_info": {
+          "package_name": "com.example.pupigon"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbO6HWAL2sgP7nTMYZ2wA5ccHMbA-yc-k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
