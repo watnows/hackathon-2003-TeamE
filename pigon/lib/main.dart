@@ -5,18 +5,17 @@ import 'package:pigon/firebase_options.dart';
 import 'home_page.dart';
 
 final userInformationProvider =
-    StateNotifierProvider.autoDispose<UserInformation, dynamic>((ref) {
-  return UserInformation(ref);
+    StateNotifierProvider<UserInformation, dynamic>((ref) {
+  return UserInformation();
 });
 
 class UserInformation extends StateNotifier<Map> {
-  UserInformation(this.ref) : super({});
-  final Ref ref;
+  UserInformation() : super({});
+
   void addInformation(userdata) {
     state = userdata;
-    print('\n--------state--------');
-    print(state);
   }
+
 }
 
 void main() async {
