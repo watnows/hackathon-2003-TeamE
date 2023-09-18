@@ -29,7 +29,7 @@ class CopyButtonExample extends StatelessWidget {
         padding: const EdgeInsets.fromLTRB(16.0, 50.0, 16.0, 16.0), // 上部の余白を追加
         child: Column(
           children: [
-            const Gap(150),
+            const Gap(300),
             ElevatedButton(
               onPressed: () => _createButtonPressed(context),
               style: ElevatedButton.styleFrom(

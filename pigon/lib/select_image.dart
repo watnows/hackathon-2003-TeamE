@@ -2,16 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:gap/gap.dart';
 import 'dart:io';
+import 'preview_page.dart';
 
-
-//before
 class ImagePickerScreen extends StatelessWidget {
   final ValueNotifier<List<XFile>?> _imageNotifier = ValueNotifier<List<XFile>?>(null);
 
   ImagePickerScreen({Key? key}) : super(key: key);
 
   Future<void> getImage() async {
-
     
     final imagePicker = ImagePicker();
     final images = await imagePicker.pickMultiImage();
@@ -34,12 +32,11 @@ class ImagePickerScreen extends StatelessWidget {
                   icon: const Icon(Icons.arrow_back),
                   onPressed: () => Navigator.pop(context),
                 ),
-                const SizedBox(width: 60),
-
+                const SizedBox(width: 80),
                 const Text(
-                  'name',
+                  '画像を選択',
                   style: TextStyle(
-                  fontSize: 15, 
+                  fontSize: 20, 
                   ),
                 ),
               ],
@@ -71,7 +68,10 @@ class ImagePickerScreen extends StatelessWidget {
             ),
             ElevatedButton(
               onPressed: () {
-                
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const PreviewPage()),
+                  );
               },
               style: ElevatedButton.styleFrom(
                 shape: const StadiumBorder(), // ボタンの形状を楕円形にします
@@ -84,12 +84,13 @@ class ImagePickerScreen extends StatelessWidget {
                   ),
               ),
             ),
+            const Gap(85),
           ],
         ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: getImage,
-        tooltip: 'Pick Images',
+        tooltip: '写真を選んでください',
         child: const Icon(Icons.add_a_photo),
       ),
     );
