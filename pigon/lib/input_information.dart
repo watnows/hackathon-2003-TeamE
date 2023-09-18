@@ -77,9 +77,14 @@ class InputFormScreen extends ConsumerWidget {
                 onPressed: () {
                   final userInformation = {
                     'name': _nameController.value.text,
-                    'introduction': _introductionController.value.text,
-                    'link': _linkController.value.text,
+                    'selfIntroduction': _introductionController.value.text,
+                    'career': _linkController.value.text,
                     'linkDescription': _linkDescriptionController.value.text,
+                    'imageDescriptions': {
+                      '1': '1枚目の画像の説明',
+                      '2': '2枚目の画像の説明',
+                      '4': '4枚目の画像の説明',
+                    }
                   };
                   ref
                       .read(userInformationProvider.notifier)
