@@ -1,14 +1,18 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'main.dart';
 import 'package:gap/gap.dart';
 
+
 class PreviewPage extends ConsumerWidget {
   const PreviewPage({Key? key}) : super(key: key);
+  
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final userInformation = ref.read(userInformationProvider);
+    var db = FirebaseFirestore.instance;
 
   return Scaffold(
   body: Padding(
@@ -53,6 +57,10 @@ class PreviewPage extends ConsumerWidget {
               context,
               MaterialPageRoute(builder: (context) => const PreviewPage()),
             );
+
+          db.collection("homepages").add(userInformation).then((DocumentReference doc) =>
+          print('DocumentSnapshot added with ID: ${doc.id}'));
+
           },
           style: ElevatedButton.styleFrom(
             shape: const StadiumBorder(), 
