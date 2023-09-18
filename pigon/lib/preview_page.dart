@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'main.dart';
 import 'package:gap/gap.dart';
+import 'published_page.dart';
 
 
 class PreviewPage extends ConsumerWidget {
@@ -53,14 +54,15 @@ class PreviewPage extends ConsumerWidget {
         
         ElevatedButton(
           onPressed: () {
+            var url;
+          db.collection("homepages").add(userInformation).then((DocumentReference doc) {
+            url = doc.id;
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const PreviewPage()),
+              MaterialPageRoute(builder: (context) =>  PublishedPage(url: url)),
             );
-
-          db.collection("homepages").add(userInformation).then((DocumentReference doc) =>
-          print('DocumentSnapshot added with ID: ${doc.id}'));
-
+          });
+          
           },
           style: ElevatedButton.styleFrom(
             shape: const StadiumBorder(), 
