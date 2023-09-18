@@ -4,7 +4,6 @@ import 'package:pigon/main.dart';
 import 'select_image.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-
 class UserInformation {
   String name = '';
   String introduction = '';
@@ -12,12 +11,10 @@ class UserInformation {
   String linkDescription = '';
 }
 
-final _nameController =TextEditingController();
-final _introductionController =TextEditingController();
-final _linkController =TextEditingController();
-final _linkDescriptionController =TextEditingController();
-
-
+final _nameController = TextEditingController();
+final _introductionController = TextEditingController();
+final _linkController = TextEditingController();
+final _linkDescriptionController = TextEditingController();
 
 class InputFormScreen extends ConsumerWidget {
   const InputFormScreen({Key? key}) : super(key: key);
@@ -42,63 +39,61 @@ class InputFormScreen extends ConsumerWidget {
                   const Text(
                     'サイト情報登録',
                     style: TextStyle(
-                    fontSize: 20,
+                      fontSize: 20,
                     ),
                   )
                 ],
               ),
               const SizedBox(height: 100),
               TextFormField(
-                decoration: const InputDecoration(
-                  labelText: '名前',
-                  border: OutlineInputBorder(),
-                ),
-                controller:_nameController
-              ),
+                  decoration: const InputDecoration(
+                    labelText: '名前',
+                    border: OutlineInputBorder(),
+                  ),
+                  controller: _nameController),
               const SizedBox(height: 20),
               TextFormField(
-                decoration: const InputDecoration(
-                  labelText: '自己紹介',
-                  border: OutlineInputBorder(),
-                ),
-                controller:_introductionController
-              ),
+                  decoration: const InputDecoration(
+                    labelText: '自己紹介',
+                    border: OutlineInputBorder(),
+                  ),
+                  controller: _introductionController),
               const SizedBox(height: 20),
               TextFormField(
-                decoration: const InputDecoration(
-                  labelText: 'リンク',
-                  border: OutlineInputBorder(),
-                ),
-                controller:_linkController
-              ),
+                  decoration: const InputDecoration(
+                    labelText: 'リンク',
+                    border: OutlineInputBorder(),
+                  ),
+                  controller: _linkController),
               const SizedBox(height: 20),
               TextFormField(
-                decoration: const InputDecoration(
-                  labelText: 'リンク説明',
-                  border: OutlineInputBorder(),
-                ),
-                controller:_linkDescriptionController
-              ),
+                  decoration: const InputDecoration(
+                    labelText: 'リンク説明',
+                    border: OutlineInputBorder(),
+                  ),
+                  controller: _linkDescriptionController),
               const Gap(150),
               ElevatedButton(
                 onPressed: () {
                   final userInformation = {
-                    'name':_nameController.value,
-                    'introduction':_introductionController,
-                    'link':_linkController,
-                    'linkDescription':_linkDescriptionController,
+                    'name': _nameController.value.text,
+                    'introduction': _introductionController.value.text,
+                    'link': _linkController.value.text,
+                    'linkDescription': _linkDescriptionController.value.text,
                   };
-
-                  ref.read(userInformationProvider.notifier).addInformation(userInformation);
+                  ref
+                      .read(userInformationProvider.notifier)
+                      .addInformation(userInformation);
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => ImagePickerScreen()),
+                    MaterialPageRoute(
+                        builder: (context) => ImagePickerScreen()),
                   );
-              
                 },
                 style: ElevatedButton.styleFrom(
                   shape: const StadiumBorder(),
-                  padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                 ),
                 child: const Text(
                   '完了',
@@ -114,4 +109,3 @@ class InputFormScreen extends ConsumerWidget {
     );
   }
 }
-

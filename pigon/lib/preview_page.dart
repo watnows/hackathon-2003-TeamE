@@ -9,25 +9,27 @@ class PreviewPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final userInformation = ref.watch(userInformationProvider);
-    
+    final userInformation = ref.read(userInformationProvider);
+    print('\n-------prev---------');
+    print(userInformation);
+
     //return Scaffold(
-      // body: Column(
-      //   children: [
-          // Expanded(
-          //   child: userInformation.when(
-          //     data: (data) {
-          //       return ListView.builder(
-          //         itemCount: data.length,
-          //         itemBuilder: (BuildContext context, int index) {
-          //           return Text(data[index]);
-          //         },
-          //       );
-          //     },
-          //     loading: () => const CircularProgressIndicator(),
-          //     error: (err, stack) => Text('Error: $err'),
-          //   ),
-          // ),
+    // body: Column(
+    //   children: [
+    // Expanded(
+    //   child: userInformation.when(
+    //     data: (data) {
+    //       return ListView.builder(
+    //         itemCount: data.length,
+    //         itemBuilder: (BuildContext context, int index) {
+    //           return Text(data[index]);
+    //         },
+    //       );
+    //     },
+    //     loading: () => const CircularProgressIndicator(),
+    //     error: (err, stack) => Text('Error: $err'),
+    //   ),
+    // ),
 
     return Scaffold(
       body: Padding(
@@ -46,7 +48,7 @@ class PreviewPage extends ConsumerWidget {
                 const Text(
                   'プレビュー',
                   style: TextStyle(
-                  fontSize: 20, 
+                    fontSize: 20,
                   ),
                 ),
               ],
@@ -55,19 +57,20 @@ class PreviewPage extends ConsumerWidget {
             ElevatedButton(
               onPressed: () {
                 Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const PreviewPage()),
-                  );
+                  context,
+                  MaterialPageRoute(builder: (context) => const PreviewPage()),
+                );
               },
               style: ElevatedButton.styleFrom(
                 shape: const StadiumBorder(), // ボタンの形状を楕円形にします
-                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15), // 横と縦のパディングを適切に調整します
-                ),
+                padding: const EdgeInsets.symmetric(
+                    horizontal: 30, vertical: 15), // 横と縦のパディングを適切に調整します
+              ),
               child: const Text(
                 '公開',
                 style: TextStyle(
-                  fontSize: 30, 
-                  ),
+                  fontSize: 30,
+                ),
               ),
             ),
             const Gap(10),
@@ -77,5 +80,3 @@ class PreviewPage extends ConsumerWidget {
     );
   }
 }
-
-
