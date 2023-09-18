@@ -8,8 +8,7 @@
       "name": "pigon",
       "request": "launch",
       "type": "dart",
-      "args": ["--web-port", "3000"],
-      "deviceId": "chrome"
+      "args": ["--web-port", "3000"]
     },
     {
       "name": "pigon (profile mode)",
