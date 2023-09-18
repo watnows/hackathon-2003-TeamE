@@ -43,15 +43,14 @@ class PreviewPage extends ConsumerWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('Name: ${userInformation['name'] ?? '未設定'}', style: const TextStyle(fontSize: 20)),
-                Text('Introduction: ${userInformation['introduction'] ?? '未設定'}', style: const TextStyle(fontSize: 20)),
-                Text('Link: ${userInformation['link'] ?? '未設定'}', style: const TextStyle(fontSize: 20)),
-                Text('Link Description: ${userInformation['linkDescription'] ?? '未設定'}', style: const TextStyle(fontSize: 20)),
+                Text('名前: ${userInformation['name'] ?? '未設定'}', style: const TextStyle(fontSize: 20)),
+                Text('自己紹介: ${userInformation['selfIntroduction'] ?? '未設定'}', style: const TextStyle(fontSize: 20)),
+                Text('リンク: ${userInformation['career'] ?? '未設定'}', style: const TextStyle(fontSize: 20)),
+                Text('リンク説明: ${userInformation['linkDescription'] ?? '未設定'}', style: const TextStyle(fontSize: 20)),
               ],
             ),
           ),
         ),
-        
         ElevatedButton(
           onPressed: () {
             var url;
@@ -75,7 +74,7 @@ class PreviewPage extends ConsumerWidget {
             ),
           ),
         ),
-        const Gap(10),
+        
       ],
     ),
   ),

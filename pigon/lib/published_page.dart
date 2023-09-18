@@ -7,8 +7,10 @@ class PublishedPage extends StatelessWidget {
   const PublishedPage({Key? key, required this.url}) : super(key: key);
   final String url;
 
+
   void _copyToClipboard(BuildContext context) {
-    Clipboard.setData(const ClipboardData(text: "URL"));
+    final data = ClipboardData(text: 'https://watnow-hackathon-pigon.web.app/?id='+url);
+    Clipboard.setData(data);
     ScaffoldMessenger.of(context).showSnackBar(
       const SnackBar(
         content: Text('コピー完了'),
@@ -45,11 +47,11 @@ class PublishedPage extends StatelessWidget {
             
             Row(
               children: [
-                const Expanded(
+                Expanded(
                   child: Text(
-                    'URL',
-                    style: TextStyle(
-                      fontSize: 20,
+                  'https://watnow-hackathon-pigon.web.app/?id='+url,
+                    style: const TextStyle(
+                      fontSize: 15,
                     ),
                   ),
                 ),
